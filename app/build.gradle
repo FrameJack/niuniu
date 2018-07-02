@@ -76,6 +76,9 @@ dependencies {
     compile project(':imagepicker')
     compile 'top.zibin:Luban:1.1.2'
     compile project(':bgabadge')
+    // 侧滑删除
+    compile 'com.yanzhenjie:recyclerview-swipe:1.1.4'
+
 }
 
 allprojects {
