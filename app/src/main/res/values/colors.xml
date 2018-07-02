@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorMain">#333333</color>
+
+    <!--状态栏颜色-->
+    <color name="color_topBarSteep">#0b6ac2</color>
+    <color name="color_333333">#333333</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="color_3c3c3c">#3c3c3c</color>
+    <color name="black">#000000</color>
+    
+    <!--登录和注册-->
+    <color name="color_f93967">#f93967</color>
+    <color name="color_80e9e9e9">#80e9e9e9</color>
+
+    <!--登录和注册-->
+    <color name="color_8989a6">#8899a6</color>
+
+</resources>

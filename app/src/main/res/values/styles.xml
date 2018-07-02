@@ -1,0 +1,72 @@
+<resources>
+
+    <!--TODO color not set-->
+    <style name="SimpleDialogLight" parent="Material.App.Dialog.Simple.Light">
+        <item name="android:layout_width">match_parent</item>
+        <item name="rbd_strokeColor">@color/colorPrimary</item>
+        <item name="cbd_strokeColor">@color/colorAccent</item>
+
+    </style>
+
+    <!--title styl标题栏-->
+    <style name="toolBarStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="contentInsetStart">0dp</item>
+        <item name="android:background">@color/colorMain</item>
+
+    </style>
+
+    <style name="WelcomeTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@mipmap/ic_start</item>
+
+    </style>
+
+    <style name="DialogStyle_1" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <!--包裹内容宽高-->
+    <style name="allWrap">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="ActionBarThemes" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">#ffffff</item>
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#00000000</item>
+        <item name="colorPrimaryDark">#00000000</item>
+        <item name="colorAccent">#00000000</item>
+    </style>
+
+    <style name="AutoWrap">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="RbMainTab" parent="AutoWrap">
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+</resources>
