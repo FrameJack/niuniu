@@ -20,4 +20,8 @@ public class ApiUrl {
     //校验 验证码
     public static final String commitVerCode = "user/forget_password_2";
 
+    //修改密码
+    public static final String verPass = "change_password_by_tel";
+
+
 }

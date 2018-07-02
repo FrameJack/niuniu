@@ -119,6 +119,15 @@
 
         </activity>
 
+        <!-- 重置密码-->
+        <activity
+            android:name=".ui.password.commit_pass.CommitPassActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActionBarThemes"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+
+        </activity>
+
     </application>
 
 </manifest>

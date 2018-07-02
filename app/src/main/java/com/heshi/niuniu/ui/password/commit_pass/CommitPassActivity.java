@@ -1,18 +1,39 @@
 package com.heshi.niuniu.ui.password.commit_pass;
 
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+
 import com.heshi.niuniu.R;
 import com.heshi.niuniu.base.BaseActivity;
 import com.heshi.niuniu.di.component.AppComponent;
 import com.heshi.niuniu.di.component.DaggerActivityComponent;
 import com.heshi.niuniu.di.module.ActivityModule;
+import com.heshi.niuniu.util.SnackbarUtil;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Administrator on 2018/6/29 0029.
  */
 
-public class CommitPassActivity extends BaseActivity<CommitPassPresent>implements
+public class CommitPassActivity extends BaseActivity<CommitPassPresent> implements
         CommitPassContract.Model {
 
+
+    @BindView(R.id.text_commit_pass)
+    EditText textCommitPass;
+    @BindView(R.id.text_commit_pass_again)
+    EditText textCommitPassAgain;
+    @BindView(R.id.btn_commit_commit)
+    Button btnCommitCommit;
+    @BindView(R.id.commit_container)
+    LinearLayout commitContainer;
+    private String code;
 
     @Override
     protected void setupActivityComponent(AppComponent appComponent, ActivityModule activityModule) {
@@ -28,4 +49,31 @@ public class CommitPassActivity extends BaseActivity<CommitPassPresent>implement
     protected int getLayoutId() {
         return R.layout.activity_commit_pass;
     }
+
+    @Override
+    protected void initData(Bundle savedInstanceState) {
+        super.initData(savedInstanceState);
+
+        code = getIntent().getStringExtra("code");
+        String token = getIntent().getStringExtra("token");
+
+    }
+
+    @OnClick(R.id.btn_commit_commit)
+    public void onViewClicked() {
+        String oneceStr = textCommitPass.getText().toString().trim();
+        String twoStr = textCommitPass.getText().toString().trim();
+
+        if (TextUtils.isEmpty(oneceStr)) {
+            SnackbarUtil.ShortSnackbar(commitContainer, "密码不能为空", 5).show();
+
+        } else if (TextUtils.isEmpty(twoStr)) {
+            SnackbarUtil.ShortSnackbar(commitContainer, "密码不能为空", 5).show();
+
+        } else {
+//            mPresenter.verPass(code, );
+
+        }
+    }
+
 }

@@ -14,6 +14,7 @@ public class CommitPassContract {
     }
 
     interface Presenter extends IPresenter<Model> {
+        void verPass(String verifyCode,String newPwd);
 
     }
 

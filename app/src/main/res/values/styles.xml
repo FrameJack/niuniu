@@ -41,7 +41,7 @@
     </style>
 
     <style name="ActionBarThemes" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:background">#ffffff</item>
+        <!--<item name="android:background">#ffffff</item>-->
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
     </style>

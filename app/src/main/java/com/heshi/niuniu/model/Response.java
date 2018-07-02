@@ -18,9 +18,9 @@ public class Response<T> implements Serializable {
     private boolean isSuccess;
 
     public boolean code() {
-        if (!TextUtils.isEmpty(message) && success == false) {
+        if (!TextUtils.isEmpty(message) && success == true) {
             try {
-                success = isSuccess;
+                isSuccess=success;
             } catch (Exception e) {
                 isSuccess = false;
             }
@@ -29,7 +29,7 @@ public class Response<T> implements Serializable {
     }
 
     public boolean isSuccess() {
-        return isSuccess;
+        return success;
     }
 }
 

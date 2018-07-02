@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.heshi.niuniu.R;
 import com.heshi.niuniu.base.BaseActivity;
@@ -13,6 +14,7 @@ import com.heshi.niuniu.di.component.DaggerActivityComponent;
 import com.heshi.niuniu.di.module.ActivityModule;
 import com.heshi.niuniu.ui.password.forget.ForgetPassActivity;
 import com.heshi.niuniu.ui.password.register.RegisterActivity;
+import com.heshi.niuniu.util.SnackbarUtil;
 import com.heshi.niuniu.util.ToashUtils;
 import com.heshi.niuniu.util.UIHelper;
 
@@ -32,6 +34,8 @@ public class LoginActivity extends BaseActivity<LoginPresent> {
     EditText textPassword;
     @BindView(R.id.btn_commit)
     Button btnCommit;
+    @BindView(R.id.container)
+    View container;
 
     @Override
     protected void setupActivityComponent(AppComponent appComponent, ActivityModule activityModule) {
@@ -62,9 +66,9 @@ public class LoginActivity extends BaseActivity<LoginPresent> {
         String pass = textPassword.getText().toString().trim();
 
         if (TextUtils.isEmpty(name)) {
-            ToashUtils.show(mContext, "账号不能为空！");
+            SnackbarUtil.ShortSnackbar(container, "账号不能为空！", 5).show();
         } else if (TextUtils.isEmpty(pass)) {
-            ToashUtils.show(mContext, "密码不能为空！");
+            SnackbarUtil.ShortSnackbar(container, "密码不能为空！", 5).show();
         } else {
             mPresenter.loginAction(name, pass);
         }
@@ -84,4 +88,5 @@ public class LoginActivity extends BaseActivity<LoginPresent> {
                 break;
         }
     }
+
 }

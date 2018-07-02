@@ -1,6 +1,7 @@
 package com.heshi.niuniu.ui.password.forget;
 
 import com.heshi.niuniu.app.ApiUrl;
+import com.heshi.niuniu.model.ForgetPassModel;
 import com.heshi.niuniu.model.Response;
 
 
@@ -21,7 +22,7 @@ public interface ForgetPassApi {
 
     @FormUrlEncoded
     @POST(ApiUrl.commitVerCode)
-    Observable<Response<Object>> commitVerCode(@Field("Mobile") String Mobile
+    Observable<Response<ForgetPassModel>> commitVerCode(@Field("Mobile") String Mobile
             , @Field("commitVerCode") String commitVerCode);
 
 }

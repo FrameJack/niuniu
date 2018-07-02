@@ -63,9 +63,9 @@ public class LoginPresent extends BasePresenter<LoginContract.Model> implements 
                     public void onNext(LoginModel loginModel) {
                         if (loginModel != null) {
                             Constants.saveInfo(loginModel);
-
                             UIHelper.startActivity(mActivity, MainActivity.class);
                             mActivity.finish();
+
                         }
                         dialog.dismiss();
 

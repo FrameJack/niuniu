@@ -2,16 +2,21 @@ package com.heshi.niuniu.ui.password.forget;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.TextView;
 
+import com.heshi.niuniu.model.ForgetPassModel;
 import com.heshi.niuniu.present.BasePresenter;
 import com.heshi.niuniu.rx.data.RxResultHelper;
 import com.heshi.niuniu.rx.data.SchedulersCompat;
+import com.heshi.niuniu.ui.password.commit_pass.CommitPassActivity;
 import com.heshi.niuniu.util.CountDownButtonHelper;
 import com.heshi.niuniu.util.HttpDialog;
 import com.heshi.niuniu.util.ToashUtils;
+import com.heshi.niuniu.util.UIHelper;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -104,14 +109,14 @@ public class ForgetPassPresent extends BasePresenter<ForgetPassContract.Model>
     }
 
     @Override
-    public void commitVerCode(String userName, String verCode) {
+    public void commitVerCode(String userName, final String verCode) {
         dialog.setMessage("密码重置中！");
         dialog.show();
 
         addSubscription(api.commitVerCode(userName, verCode)
                         .compose(SchedulersCompat.applyIoSchedulers())
                         .compose(RxResultHelper.handleResult())
-                , new Subscriber() {
+                , new Subscriber<ForgetPassModel>() {
                     @Override
                     public void onCompleted() {
                         dialog.dismiss();
@@ -126,10 +131,13 @@ public class ForgetPassPresent extends BasePresenter<ForgetPassContract.Model>
                     }
 
                     @Override
-                    public void onNext(Object o) {
+                    public void onNext(ForgetPassModel model) {
                         dialog.dismiss();
-                        ToashUtils.show(mActivity, "密码重置成功！");
+                        Bundle data = new Bundle();
+                        data.putString("code", verCode);
+                        data.putString("token",model.getToken());
 
+                        UIHelper.startActivity(mActivity, CommitPassActivity.class, data);
                     }
                 });
 

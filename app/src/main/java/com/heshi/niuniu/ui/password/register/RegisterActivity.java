@@ -1,7 +1,7 @@
 package com.heshi.niuniu.ui.password.register;
 
 import android.os.Bundle;
-import android.os.CountDownTimer;
+import android.support.design.widget.CoordinatorLayout;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +13,7 @@ import com.heshi.niuniu.base.BaseActivity;
 import com.heshi.niuniu.di.component.AppComponent;
 import com.heshi.niuniu.di.component.DaggerActivityComponent;
 import com.heshi.niuniu.di.module.ActivityModule;
+import com.heshi.niuniu.util.SnackbarUtil;
 import com.heshi.niuniu.util.ToashUtils;
 
 import butterknife.BindView;
@@ -38,6 +39,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresent>
     TextView textRegisterTreaty;
     @BindView(R.id.text_password)
     EditText textPassword;
+    @BindView(R.id.container)
+    CoordinatorLayout container;
 
     @Override
     protected void setupActivityComponent(AppComponent appComponent, ActivityModule activityModule) {
@@ -61,7 +64,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresent>
         switch (view.getId()) {
             case R.id.text_register_send_code:
                 if (TextUtils.isEmpty(userName)) {
-                    ToashUtils.show(mContext, "手机号不能为空！");
+                    SnackbarUtil.ShortSnackbar(container,"手机号不能为空！",5).show();
                 } else {
                     mPresenter.getCode(userName, textRegisterSendCode);
                 }
@@ -72,13 +75,14 @@ public class RegisterActivity extends BaseActivity<RegisterPresent>
                 String pass = textPassword.getText().toString().trim();
 
                 if (TextUtils.isEmpty(userName)) {
-                    ToashUtils.show(mContext, "手机号不能为空！");
+                    SnackbarUtil.ShortSnackbar(container,"手机号不能为空！",5).show();
 
                 } else if (TextUtils.isEmpty(code)) {
-                    ToashUtils.show(mContext, "验证码不能为空！");
+                    SnackbarUtil.ShortSnackbar(container,"验证码不能为空！",5).show();
 
                 } else if (TextUtils.isEmpty(pass)) {
-                    ToashUtils.show(mContext, "密码不能为空！");
+                    SnackbarUtil.ShortSnackbar(container,"密码不能为空！",5).show();
+
                 } else {
                     mPresenter.registerCou(userName, pass, code);
                 }
