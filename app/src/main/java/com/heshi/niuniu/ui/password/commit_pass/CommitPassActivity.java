@@ -26,6 +26,6 @@ public class CommitPassActivity extends BaseActivity<CommitPassPresent>implement
 
     @Override
     protected int getLayoutId() {
-        return R.layout.;
+        return R.layout.activity_commit_pass;
     }
 }
