@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.heshi.niuniu.R;
+import com.heshi.niuniu.app.Constants;
 import com.heshi.niuniu.base.BaseActivity;
 import com.heshi.niuniu.custom.NoScrollViewPager;
 import com.heshi.niuniu.custom.tab.CustomTabView;
@@ -60,6 +61,7 @@ public class MainActivity extends BaseActivity<MainPresent> implements CustomTab
         super.initData(savedInstanceState);
         initFragmentData();
         setTabData();
+        mPresenter.getImPass(Constants.userName);
     }
 
     /**

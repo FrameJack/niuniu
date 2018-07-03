@@ -1,12 +1,14 @@
 package com.heshi.niuniu.ui.password.commit_pass;
 
 import android.app.Activity;
+import android.support.design.widget.CoordinatorLayout;
 
 import com.heshi.niuniu.present.BasePresenter;
 import com.heshi.niuniu.rx.data.RxResultHelper;
 import com.heshi.niuniu.rx.data.SchedulersCompat;
 import com.heshi.niuniu.ui.login.LoginActivity;
 import com.heshi.niuniu.util.HttpDialog;
+import com.heshi.niuniu.util.SnackbarUtil;
 import com.heshi.niuniu.util.ToashUtils;
 import com.heshi.niuniu.util.UIHelper;
 
@@ -23,8 +25,8 @@ import rx.Subscriber;
 public class CommitPassPresent extends BasePresenter<CommitPassContract.Model>
         implements CommitPassContract.Presenter {
 
-    private  CommitPassApi api;
-    private  HttpDialog dialog;
+    private CommitPassApi api;
+    private HttpDialog dialog;
 
     @Inject
     public CommitPassPresent(Activity activity, OkHttpClient okHttpClient, Retrofit retrofit) {
@@ -36,24 +38,31 @@ public class CommitPassPresent extends BasePresenter<CommitPassContract.Model>
 
 
     @Override
-    public void verPass(String verifyCode, String newPwd) {
-        addSubscription(api.verPass(verifyCode, newPwd)
+    public void verPass(String confirmpassword, String newpassword, String token
+            , final CoordinatorLayout coordinatorLayout) {
+        dialog.show();
+
+        addSubscription(api.verPass(confirmpassword, newpassword, token)
                         .compose(SchedulersCompat.applyIoSchedulers())
                         .compose(RxResultHelper.handleResult())
                 , new Subscriber() {
                     @Override
                     public void onCompleted() {
-
+                        dialog.dismiss();
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        dialog.dismiss();
 
                     }
 
                     @Override
                     public void onNext(Object o) {
-                        ToashUtils.show(mActivity,"修改成功！");
+                        dialog.dismiss();
+                        SnackbarUtil.ShortSnackbar(coordinatorLayout,
+                                " 修改成功！", 5).show();
+
                         UIHelper.startActivity(mActivity, LoginActivity.class);
                     }
                 });

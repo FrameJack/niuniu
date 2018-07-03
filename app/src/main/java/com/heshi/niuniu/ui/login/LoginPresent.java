@@ -39,7 +39,7 @@ public class LoginPresent extends BasePresenter<LoginContract.Model> implements 
     }
 
     @Override
-    public void loginAction(String name, String password) {
+    public void loginAction(final String name, String password) {
         dialog.setMessage("登录中");
         dialog.show();
 
@@ -62,10 +62,9 @@ public class LoginPresent extends BasePresenter<LoginContract.Model> implements 
                     @Override
                     public void onNext(LoginModel loginModel) {
                         if (loginModel != null) {
-                            Constants.saveInfo(loginModel);
+                            Constants.saveInfo(loginModel,name);
                             UIHelper.startActivity(mActivity, MainActivity.class);
                             mActivity.finish();
-
                         }
                         dialog.dismiss();
 

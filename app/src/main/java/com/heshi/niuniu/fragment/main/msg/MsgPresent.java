@@ -2,6 +2,7 @@ package com.heshi.niuniu.fragment.main.msg;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import com.heshi.niuniu.R;
 import com.heshi.niuniu.adapter.msg.MessageAdapter;
 import com.heshi.niuniu.model.MessageListModel;
 import com.heshi.niuniu.present.BasePresenter;
+import com.heshi.niuniu.ui.webview.XWebViewActivity;
+import com.heshi.niuniu.util.UIHelper;
 import com.heshi.niuniu.util.recyclerview.BaseMyRecyclerVIewAdapter;
 import com.heshi.niuniu.util.recyclerview.DividerItemDecoration;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenu;
@@ -37,7 +40,7 @@ import static com.heshi.niuniu.util.UiUtils.dp2px;
  */
 
 public class MsgPresent extends BasePresenter<MsgContract.Model>
-        implements MsgContract.Presenter, BaseMyRecyclerVIewAdapter.CardListener {
+        implements MsgContract.Presenter, BaseMyRecyclerVIewAdapter.CardListener, View.OnClickListener {
 
     private List<MessageListModel> list = new ArrayList<>();
     private View view;
@@ -71,7 +74,10 @@ public class MsgPresent extends BasePresenter<MsgContract.Model>
     }
 
     private void initHead(View view) {
-
+        View snatchPack = view.findViewById(R.id.view_message_head_snatch);
+        View sendPack = view.findViewById(R.id.view_message_head_send);
+        snatchPack.setOnClickListener(this);
+        sendPack.setOnClickListener(this);
 
     }
 
@@ -100,8 +106,9 @@ public class MsgPresent extends BasePresenter<MsgContract.Model>
 
             if (viewType == -2) {
                 SwipeMenuItem deleteItem = new SwipeMenuItem(mActivity)
-                        .setBackground(R.color.color_FC3768)
-                        .setText("同意")
+                        .setText("")
+                        .setBackground(R.color.color_f93967)
+                        .setImage(R.mipmap.icon_delect_1)
                         .setTextColor(Color.WHITE)
                         .setWidth(width)
                         .setHeight(height);
@@ -139,6 +146,27 @@ public class MsgPresent extends BasePresenter<MsgContract.Model>
 
     @Override
     public void onCardListener(View view, int position) {
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        Bundle data = new Bundle();
+
+
+        switch (view.getId()) {
+            case R.id.view_message_head_snatch:
+                data.putInt(XWebViewActivity.TYPE, XWebViewActivity.SNATCH_PACK);
+
+                UIHelper.startActivity(mActivity, XWebViewActivity.class, data);
+
+                break;
+            case R.id.view_message_head_send:
+                data.putInt(XWebViewActivity.TYPE, XWebViewActivity.SEND_PACK);
+                UIHelper.startActivity(mActivity, XWebViewActivity.class, data);
+
+                break;
+        }
 
     }
 }

@@ -1,6 +1,7 @@
 package com.heshi.niuniu.ui.password.commit_pass;
 
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,8 +33,8 @@ public class CommitPassActivity extends BaseActivity<CommitPassPresent> implemen
     @BindView(R.id.btn_commit_commit)
     Button btnCommitCommit;
     @BindView(R.id.commit_container)
-    LinearLayout commitContainer;
-    private String code;
+    CoordinatorLayout commitContainer;
+    private String token;
 
     @Override
     protected void setupActivityComponent(AppComponent appComponent, ActivityModule activityModule) {
@@ -53,9 +54,7 @@ public class CommitPassActivity extends BaseActivity<CommitPassPresent> implemen
     @Override
     protected void initData(Bundle savedInstanceState) {
         super.initData(savedInstanceState);
-
-        code = getIntent().getStringExtra("code");
-        String token = getIntent().getStringExtra("token");
+        token = getIntent().getStringExtra("token");
 
     }
 
@@ -71,7 +70,7 @@ public class CommitPassActivity extends BaseActivity<CommitPassPresent> implemen
             SnackbarUtil.ShortSnackbar(commitContainer, "密码不能为空", 5).show();
 
         } else {
-//            mPresenter.verPass(code, );
+            mPresenter.verPass(oneceStr, twoStr, token,commitContainer);
 
         }
     }

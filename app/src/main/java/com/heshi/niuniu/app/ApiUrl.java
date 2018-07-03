@@ -21,7 +21,10 @@ public class ApiUrl {
     public static final String commitVerCode = "user/forget_password_2";
 
     //修改密码
-    public static final String verPass = "change_password_by_tel";
+    public static final String verPass = "user/forget_password_3";
 
+
+    //获取im信息
+    public static final String getImPass = "im/user.do";
 
 }

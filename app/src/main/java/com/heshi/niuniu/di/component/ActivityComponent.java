@@ -11,6 +11,7 @@ import com.heshi.niuniu.ui.password.commit_pass.CommitPassActivity;
 import com.heshi.niuniu.ui.password.forget.ForgetPassActivity;
 import com.heshi.niuniu.ui.password.register.RegisterActivity;
 import com.heshi.niuniu.ui.startpage.StartPageActivity;
+import com.heshi.niuniu.ui.webview.XWebViewActivity;
 
 import dagger.Component;
 
@@ -40,4 +41,6 @@ public interface ActivityComponent {
     //重置密码
     void inject(CommitPassActivity commitPassActivity);
 
+    //webView
+    void inject(XWebViewActivity xWebViewActivity);
 }

@@ -20,15 +20,22 @@ public class Response<T> implements Serializable {
     public boolean code() {
         if (!TextUtils.isEmpty(message) && success == true) {
             try {
-                isSuccess=success;
+                isSuccess = success;
             } catch (Exception e) {
                 isSuccess = false;
+            }
+        } else {
+            if (message.equals("ok")) {
+                isSuccess = true;
             }
         }
         return isSuccess;
     }
 
     public boolean isSuccess() {
+        if (message.equals("ok")) {
+            return true;
+        }
         return success;
     }
 }

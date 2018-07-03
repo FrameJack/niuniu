@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.design.widget.CoordinatorLayout;
 import android.widget.TextView;
 
 import com.heshi.niuniu.model.ForgetPassModel;
@@ -15,6 +16,7 @@ import com.heshi.niuniu.rx.data.SchedulersCompat;
 import com.heshi.niuniu.ui.password.commit_pass.CommitPassActivity;
 import com.heshi.niuniu.util.CountDownButtonHelper;
 import com.heshi.niuniu.util.HttpDialog;
+import com.heshi.niuniu.util.SnackbarUtil;
 import com.heshi.niuniu.util.ToashUtils;
 import com.heshi.niuniu.util.UIHelper;
 
@@ -46,7 +48,7 @@ public class ForgetPassPresent extends BasePresenter<ForgetPassContract.Model>
     private TimerTask mTask;
     private long duration = 60000;//倒计时时长 设置默认10秒
     private long temp_duration;
-    private String clickBeffor = "倒计时开始";//点击前
+    private String clickBeffor = "点击重新获取";//点击前
     private String clickAfter = "秒后重新开始";//点击后
     private TextView btn;
 
@@ -76,7 +78,7 @@ public class ForgetPassPresent extends BasePresenter<ForgetPassContract.Model>
 
 
     @Override
-    public void forgetPass(String userName, final TextView btn) {
+    public void forgetPass(String userName, final TextView btn, final CoordinatorLayout container) {
         this.btn = btn;
         dialog.setMessage("发送中！");
         dialog.show();
@@ -100,9 +102,9 @@ public class ForgetPassPresent extends BasePresenter<ForgetPassContract.Model>
                     @Override
                     public void onNext(Object o) {
                         dialog.dismiss();
-                        ToashUtils.show(mActivity, "发送成功！");
+                        SnackbarUtil.ShortSnackbar
+                                (container, "发送成功！", 5).show();
                         startTimer(btn);
-
                     }
                 });
 
@@ -134,8 +136,7 @@ public class ForgetPassPresent extends BasePresenter<ForgetPassContract.Model>
                     public void onNext(ForgetPassModel model) {
                         dialog.dismiss();
                         Bundle data = new Bundle();
-                        data.putString("code", verCode);
-                        data.putString("token",model.getToken());
+                        data.putString("token", model.getToken());
 
                         UIHelper.startActivity(mActivity, CommitPassActivity.class, data);
                     }

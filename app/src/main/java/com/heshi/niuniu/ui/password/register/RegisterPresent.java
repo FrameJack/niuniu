@@ -38,7 +38,7 @@ public class RegisterPresent extends BasePresenter<RegisterContract.Model>
     private TimerTask mTask;
     private long duration = 60000;//倒计时时长 设置默认10秒
     private long temp_duration;
-    private String clickBeffor = "倒计时开始";//点击前
+    private String clickBeffor = "点击重新获取";//点击前
     private String clickAfter = "秒后重新开始";//点击后
     private TextView btn;
 

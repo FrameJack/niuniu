@@ -58,7 +58,7 @@ public class ForgetPassActivity extends BaseActivity<ForgetPassPresent>
                     SnackbarUtil.ShortSnackbar(container, "手机号不能为空！", 5).show();
 
                 } else {
-                    mPresenter.forgetPass(name, textForgetSendCode);
+                    mPresenter.forgetPass(name, textForgetSendCode,container);
                 }
 
                 break;

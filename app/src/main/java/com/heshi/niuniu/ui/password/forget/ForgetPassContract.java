@@ -1,5 +1,6 @@
 package com.heshi.niuniu.ui.password.forget;
 
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
@@ -24,7 +25,7 @@ public class ForgetPassContract {
 
     interface Presenter extends IPresenter<Model> {
 
-        void forgetPass(String userName,TextView tv);
+        void forgetPass(String userName,TextView tv, CoordinatorLayout container);
 
         void commitVerCode(String userName, String verCode);
     }

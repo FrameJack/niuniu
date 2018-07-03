@@ -23,6 +23,8 @@ public class MainContract {
         void initAdapter(FragmentManager fm, List<Fragment> fragmentList, List<String> strList
                 , ViewPager viewPager);
 
+        void getImPass(String name);
+
     }
 
 }

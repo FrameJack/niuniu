@@ -4,6 +4,7 @@ package com.heshi.niuniu.base;
 import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -27,12 +28,11 @@ import java.util.Arrays;
 import java.util.List;
 
 
-
 /**
  * Created by min on 2017/3/1.
  */
 
-public class MyApplication extends Application {
+public class MyApplication extends MultiDexApplication {
     private static MyApplication mInstance;
     private static final String realmName = "hf.realm";
     public static LiteOrm liteOrm;
@@ -40,24 +40,27 @@ public class MyApplication extends Application {
 
     //依赖注入
     private static AppComponent mAppComponent;
-    public static  int          USER_TYPE;
-    public static String USER_ID  = "";
+    public static int USER_TYPE;
+    public static String USER_ID = "";
     public static String appToken = "123456"; // 用户登录token
-    public static String APPID    = "ANDROID-1.0.0";//appid
+    public static String APPID = "ANDROID-1.0.0";//appid
     public static Application application;
 
-    public static  Context       applicationContext;
+    public static Context applicationContext;
     private static MyApplication instance;
     public static String currentUserNick = "";
 
 
     @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
+    @Override
     public void onCreate() {
         super.onCreate();
         application = (Application) getApplicationContext();
-        MultiDex.install(this);
-
-
       /*  if (BuildConfig.DEBUG && Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
             StrictMode.setThreadPolicy(
                     new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build());
@@ -77,7 +80,7 @@ public class MyApplication extends Application {
         //        GlideCacheUtil.getInstance().clearImageAllCache(getApplication());
         // bugly 配置  初始化Bugly
         CrashReport.initCrashReport(this, "5d4e9977de", false);
-        Context context =this ;
+        Context context = this;
         // 获取当前包名
         String packageName = context.getPackageName();
         // 获取当前进程名
@@ -107,7 +110,7 @@ public class MyApplication extends Application {
 
     }
 
-    private        ArrayList<InputStream> attachmentsInputStreams;
+    private ArrayList<InputStream> attachmentsInputStreams;
 
     public ArrayList<InputStream> getAttachmentsInputStreams() {
         return attachmentsInputStreams;
@@ -129,8 +132,8 @@ public class MyApplication extends Application {
 
     /**
      * 获取进程号对应的进程名
-     * @param pid
-     *         进程号
+     *
+     * @param pid 进程号
      * @return 进程名
      */
     private static String getProcessName(int pid) {
@@ -176,6 +179,7 @@ public class MyApplication extends Application {
 
     /**
      * 当前实例
+     *
      * @return
      */
     public static MyApplication getInstance() {

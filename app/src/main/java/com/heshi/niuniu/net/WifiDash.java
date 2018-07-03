@@ -22,7 +22,7 @@ public class WifiDash {
      * @see WifiInfo
      */
     public static String getBSSID() {
-        WifiManager wifiManager = (WifiManager) Ext.getContext().getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifiManager = (WifiManager) Ext.getContext().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
         if (wifiManager == null) {
             return null;
@@ -51,7 +51,7 @@ public class WifiDash {
     }
 
     public static String getSSID() {
-        WifiManager wifiManager = (WifiManager) Ext.getContext().getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifiManager = (WifiManager) Ext.getContext().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
         if (wifiManager == null) {
             return null;
@@ -105,7 +105,7 @@ public class WifiDash {
     }
 
     private static Object queryWifiInfo(Object defValue) {
-        WifiManager wifiManager = (WifiManager) Ext.getContext().getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifiManager = (WifiManager) Ext.getContext().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
         if (wifiManager == null) {
             return defValue;
@@ -127,7 +127,7 @@ public class WifiDash {
     }
 
     public static String getWifiInfo() {
-        WifiManager wifiManager = (WifiManager) Ext.getContext().getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifiManager = (WifiManager) Ext.getContext().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
         if (wifiManager == null) {
             return "[-]";

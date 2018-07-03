@@ -1,5 +1,7 @@
 package com.heshi.niuniu.ui.password.commit_pass;
 
+import android.support.design.widget.CoordinatorLayout;
+
 import com.heshi.niuniu.present.IPresenter;
 import com.heshi.niuniu.present.MModel;
 
@@ -14,7 +16,8 @@ public class CommitPassContract {
     }
 
     interface Presenter extends IPresenter<Model> {
-        void verPass(String verifyCode,String newPwd);
+        void verPass(String confirmpassword, String newpassword, String token
+                , CoordinatorLayout coordinatorLayout);
 
     }
 

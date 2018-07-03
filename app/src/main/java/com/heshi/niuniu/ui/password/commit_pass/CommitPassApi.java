@@ -17,7 +17,8 @@ public interface CommitPassApi {
 
     @FormUrlEncoded
     @POST(ApiUrl.verPass)
-    Observable<Response<Object>> verPass(@Field("verifycode") String verifycode
-            ,@Field("newpwd") String newpwd);
+    Observable<Response<Object>> verPass(@Field("confirmpassword") String confirmpassword
+            , @Field("newpassword") String newpassword, @Field("token") String token);
+
 
 }
