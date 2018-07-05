@@ -32,6 +32,7 @@ public class Constants {
     public static final String IM_USER_KEY = "im_usrName";
     public static final String IM_PASS_KEY = "im_pass";
     public static final String APP_KEY = "appkey";
+    public static boolean isLoginIm;
 
 
     public static void saveInfo(LoginModel loginModel, String name) {

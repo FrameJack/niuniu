@@ -13,8 +13,10 @@ import com.heshi.niuniu.base.BaseActivity;
 import com.heshi.niuniu.di.component.AppComponent;
 import com.heshi.niuniu.di.component.DaggerActivityComponent;
 import com.heshi.niuniu.di.module.ActivityModule;
+import com.heshi.niuniu.ui.login.LoginActivity;
 import com.heshi.niuniu.util.SnackbarUtil;
 import com.heshi.niuniu.util.ToashUtils;
+import com.heshi.niuniu.util.UIHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -64,7 +66,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresent>
         switch (view.getId()) {
             case R.id.text_register_send_code:
                 if (TextUtils.isEmpty(userName)) {
-                    SnackbarUtil.ShortSnackbar(container,"手机号不能为空！",5).show();
+                    SnackbarUtil.ShortSnackbar(container, "手机号不能为空！", 5).show();
                 } else {
                     mPresenter.getCode(userName, textRegisterSendCode);
                 }
@@ -75,13 +77,13 @@ public class RegisterActivity extends BaseActivity<RegisterPresent>
                 String pass = textPassword.getText().toString().trim();
 
                 if (TextUtils.isEmpty(userName)) {
-                    SnackbarUtil.ShortSnackbar(container,"手机号不能为空！",5).show();
+                    SnackbarUtil.ShortSnackbar(container, "手机号不能为空！", 5).show();
 
                 } else if (TextUtils.isEmpty(code)) {
-                    SnackbarUtil.ShortSnackbar(container,"验证码不能为空！",5).show();
+                    SnackbarUtil.ShortSnackbar(container, "验证码不能为空！", 5).show();
 
                 } else if (TextUtils.isEmpty(pass)) {
-                    SnackbarUtil.ShortSnackbar(container,"密码不能为空！",5).show();
+                    SnackbarUtil.ShortSnackbar(container, "密码不能为空！", 5).show();
 
                 } else {
                     mPresenter.registerCou(userName, pass, code);
@@ -96,5 +98,12 @@ public class RegisterActivity extends BaseActivity<RegisterPresent>
         super.onDestroy();
         mPresenter.stopTimer();
 
+    }
+
+    @Override
+    public void onSuccess() {
+        SnackbarUtil.ShortSnackbar(container, "注册成功！", 5).show();
+        UIHelper.startActivity(mContext, LoginActivity.class);
+        appManager.finishActivity(RegisterActivity.class);
     }
 }

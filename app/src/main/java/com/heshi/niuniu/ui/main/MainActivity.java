@@ -3,12 +3,12 @@ package com.heshi.niuniu.ui.main;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.heshi.niuniu.R;
 import com.heshi.niuniu.app.Constants;
 import com.heshi.niuniu.base.BaseActivity;
-import com.heshi.niuniu.custom.NoScrollViewPager;
 import com.heshi.niuniu.custom.tab.CustomTabView;
 import com.heshi.niuniu.di.component.AppComponent;
 import com.heshi.niuniu.di.component.DaggerActivityComponent;
@@ -18,12 +18,13 @@ import com.heshi.niuniu.fragment.main.dynamic.DynamicFragment;
 import com.heshi.niuniu.fragment.main.mine.MineFragment;
 import com.heshi.niuniu.fragment.main.msg.MsgFragment;
 import com.heshi.niuniu.fragment.main.weibo.WeiBoFragment;
+import com.heshi.niuniu.im.common.Constant;
+import com.heshi.niuniu.im.sample.LoginSampleHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by Administrator on 2018/6/28 0028.
@@ -61,7 +62,15 @@ public class MainActivity extends BaseActivity<MainPresent> implements CustomTab
         super.initData(savedInstanceState);
         initFragmentData();
         setTabData();
-        mPresenter.getImPass(Constants.userName);
+        if (TextUtils.isEmpty(Constants.im_usrName)) {
+            mPresenter.getImPass(Constants.userName);
+
+        } else {
+            if (!Constants.isLoginIm){
+                mPresenter.loginIm(Constants.im_usrName, Constants.im_pass, Constants.appkey);
+            }
+        }
+
     }
 
     /**
@@ -114,7 +123,7 @@ public class MainActivity extends BaseActivity<MainPresent> implements CustomTab
     @Override
     public void onTabSelected(View v, int position) {
         viewpagerMain.setCurrentItem(position);
-        switch (position){
+        switch (position) {
 
 
         }

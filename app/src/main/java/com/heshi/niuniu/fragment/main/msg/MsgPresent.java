@@ -1,23 +1,26 @@
 package com.heshi.niuniu.fragment.main.msg;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
+import com.alibaba.mobileim.YWIMKit;
+import com.alibaba.mobileim.conversation.YWConversation;
 import com.heshi.niuniu.R;
 import com.heshi.niuniu.adapter.msg.MessageAdapter;
-import com.heshi.niuniu.model.MessageListModel;
+import com.heshi.niuniu.app.Constants;
+import com.heshi.niuniu.im.activity.chat.ChatActivity;
+import com.heshi.niuniu.im.sample.LoginSampleHelper;
 import com.heshi.niuniu.present.BasePresenter;
 import com.heshi.niuniu.ui.webview.XWebViewActivity;
+import com.heshi.niuniu.util.ToashUtils;
 import com.heshi.niuniu.util.UIHelper;
 import com.heshi.niuniu.util.recyclerview.BaseMyRecyclerVIewAdapter;
-import com.heshi.niuniu.util.recyclerview.DividerItemDecoration;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenu;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuBridge;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator;
@@ -40,9 +43,9 @@ import static com.heshi.niuniu.util.UiUtils.dp2px;
  */
 
 public class MsgPresent extends BasePresenter<MsgContract.Model>
-        implements MsgContract.Presenter, BaseMyRecyclerVIewAdapter.CardListener, View.OnClickListener {
+        implements MsgContract.Presenter, BaseMyRecyclerVIewAdapter.CardListener, View.OnClickListener, BaseMyRecyclerVIewAdapter.setOnItemClickListener {
 
-    private List<MessageListModel> list = new ArrayList<>();
+    private List<YWConversation> list = new ArrayList<>();
     private View view;
     private MessageAdapter adapter;
     private SwipeMenuBridge menuBridges;
@@ -70,7 +73,9 @@ public class MsgPresent extends BasePresenter<MsgContract.Model>
 
         view = LayoutInflater.from(mActivity).inflate(R.layout.layout_message_head, null);
         initHead(view);
-        adapter.setCardListener(this);
+//        adapter.setCardListener(this);
+        adapter.setOnItemClickListener(this);
+
     }
 
     private void initHead(View view) {
@@ -82,15 +87,18 @@ public class MsgPresent extends BasePresenter<MsgContract.Model>
     }
 
     @Override
-    public void getMsgList() {
-        for (int i = 0; i < 6; i++) {
-            MessageListModel model = new MessageListModel();
-            list.add(model);
-        }
+    public void getMsgList(List<YWConversation> mConversationList) {
+        list.addAll(mConversationList);
+
         adapter.notifyDataSetChanged();
 
         adapter.setHeaderView(view);
 
+    }
+
+    @Override
+    public void setNotify() {
+        adapter.notifyDataSetChanged();
     }
 
     private SwipeMenuCreator swipeMenuCreator = new SwipeMenuCreator() {
@@ -130,7 +138,7 @@ public class MsgPresent extends BasePresenter<MsgContract.Model>
             int menuPosition = menuBridge.getPosition(); // 菜单在RecyclerView的Item中的Position。
 
             if (direction == SwipeMenuRecyclerView.RIGHT_DIRECTION) {
-                MessageListModel data = adapter.getItem(adapterPosition);
+                YWConversation data = adapter.getItem(adapterPosition);
 
 
             } else if (direction == SwipeMenuRecyclerView.LEFT_DIRECTION) {
@@ -147,13 +155,12 @@ public class MsgPresent extends BasePresenter<MsgContract.Model>
     @Override
     public void onCardListener(View view, int position) {
 
+
     }
 
     @Override
     public void onClick(View view) {
         Bundle data = new Bundle();
-
-
         switch (view.getId()) {
             case R.id.view_message_head_snatch:
                 data.putInt(XWebViewActivity.TYPE, XWebViewActivity.SNATCH_PACK);
@@ -167,6 +174,20 @@ public class MsgPresent extends BasePresenter<MsgContract.Model>
 
                 break;
         }
+
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+//        ToashUtils.show(mActivity,"shenme");
+        Bundle data = new Bundle();
+        data.putString("targetId", list.get(position).getLatestEServiceContactId());
+        data.putString("extraAppKey",Constants.appkey);
+        UIHelper.startActivity(mActivity, ChatActivity.class,data);
+//        YWIMKit  mIMKit=LoginSampleHelper.getInstance().getIMKit();
+//
+//        Intent intent = mIMKit.getChattingActivityIntent(list.get(position).getLatestEServiceContactId(), Constants.appkey);
+//        mActivity.startActivity(intent);
 
     }
 }

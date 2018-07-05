@@ -60,10 +60,7 @@ public class CommitPassPresent extends BasePresenter<CommitPassContract.Model>
                     @Override
                     public void onNext(Object o) {
                         dialog.dismiss();
-                        SnackbarUtil.ShortSnackbar(coordinatorLayout,
-                                " 修改成功！", 5).show();
-
-                        UIHelper.startActivity(mActivity, LoginActivity.class);
+                        mModel.onSuccess();
                     }
                 });
 

@@ -12,7 +12,10 @@ import com.heshi.niuniu.base.BaseActivity;
 import com.heshi.niuniu.di.component.AppComponent;
 import com.heshi.niuniu.di.component.DaggerActivityComponent;
 import com.heshi.niuniu.di.module.ActivityModule;
+import com.heshi.niuniu.ui.login.LoginActivity;
+import com.heshi.niuniu.ui.password.forget.ForgetPassActivity;
 import com.heshi.niuniu.util.SnackbarUtil;
+import com.heshi.niuniu.util.UIHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -70,9 +73,18 @@ public class CommitPassActivity extends BaseActivity<CommitPassPresent> implemen
             SnackbarUtil.ShortSnackbar(commitContainer, "密码不能为空", 5).show();
 
         } else {
-            mPresenter.verPass(oneceStr, twoStr, token,commitContainer);
+            mPresenter.verPass(oneceStr, twoStr, token, commitContainer);
 
         }
     }
 
+    @Override
+    public void onSuccess() {
+        appManager.finishActivity(ForgetPassActivity.class);
+        appManager.finishActivity(CommitPassActivity.class);
+        SnackbarUtil.ShortSnackbar(commitContainer,
+                " 修改成功！", 5).show();
+
+        UIHelper.startActivity(mContext, LoginActivity.class);
+    }
 }

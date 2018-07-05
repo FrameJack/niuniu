@@ -10,6 +10,7 @@ import com.heshi.niuniu.base.BaseActivity;
 import com.heshi.niuniu.di.component.AppComponent;
 import com.heshi.niuniu.di.component.DaggerActivityComponent;
 import com.heshi.niuniu.di.module.ActivityModule;
+import com.heshi.niuniu.im.sample.LoginSampleHelper;
 import com.heshi.niuniu.ui.login.LoginActivity;
 import com.heshi.niuniu.ui.main.MainActivity;
 import com.heshi.niuniu.util.UIHelper;
@@ -39,6 +40,7 @@ public class StartPageActivity extends BaseActivity {
 
     private void IsFIrstLogin() {
         Constants.readInfo();
+        LoginSampleHelper.getInstance().initIMKit(Constants.im_usrName, Constants.appkey);
 
         new Handler().postDelayed(new Runnable() {
             public void run() {

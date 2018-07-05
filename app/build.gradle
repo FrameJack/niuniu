@@ -86,8 +86,8 @@ dependencies {
     compile project(':bgabadge')
     // 侧滑删除
     compile 'com.yanzhenjie:recyclerview-swipe:1.1.4'
-
-
+    compile project(':OneSDK')
+    compile 'com.gyf.barlibrary:barlibrary:2.2.6'
 
 }
 

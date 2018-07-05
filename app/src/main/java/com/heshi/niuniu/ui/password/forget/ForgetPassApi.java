@@ -23,6 +23,6 @@ public interface ForgetPassApi {
     @FormUrlEncoded
     @POST(ApiUrl.commitVerCode)
     Observable<Response<ForgetPassModel>> commitVerCode(@Field("Mobile") String Mobile
-            , @Field("commitVerCode") String commitVerCode);
+            , @Field("VerifyCode") String commitVerCode);
 
 }

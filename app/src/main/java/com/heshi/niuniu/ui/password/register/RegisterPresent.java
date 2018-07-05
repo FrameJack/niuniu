@@ -123,10 +123,10 @@ public class RegisterPresent extends BasePresenter<RegisterContract.Model>
 
                     @Override
                     public void onNext(Object o) {
-                        ToashUtils.show(mActivity, "注册成功！");
-                        UIHelper.startActivity(mActivity, LoginActivity.class);
                         dialog.dismiss();
 
+//                        ToashUtils.show(mActivity, "注册成功！");
+//                        UIHelper.startActivity(mActivity, LoginActivity.class);
                     }
                 });
     }

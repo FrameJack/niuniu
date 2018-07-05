@@ -144,6 +144,24 @@
 
         </activity>
 
+        <!-- 浏览器服务-->
+        <activity
+            android:name=".im.activity.PreviewImImageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActionBarThemes"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+
+        </activity>
+
+        <!-- 浏览器服务-->
+        <activity
+            android:name=".im.activity.chat.ChatActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_1"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+
+        </activity>
+
     </application>
 
 </manifest>

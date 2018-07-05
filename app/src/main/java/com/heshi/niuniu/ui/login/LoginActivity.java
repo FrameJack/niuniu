@@ -36,6 +36,8 @@ public class LoginActivity extends BaseActivity<LoginPresent> {
     Button btnCommit;
     @BindView(R.id.container)
     View container;
+    public static final String AUTO_LOGIN_STATE_ACTION = "com.openim.autoLoginStateActionn";
+
 
     @Override
     protected void setupActivityComponent(AppComponent appComponent, ActivityModule activityModule) {

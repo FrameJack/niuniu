@@ -41,7 +41,7 @@
     </style>
 
     <style name="ActionBarThemes" parent="Theme.AppCompat.Light.NoActionBar">
-        <!--<item name="android:background">#ffffff</item>-->
+        <item name="android:background">#ffffff</item>
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -67,6 +67,14 @@
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:paddingBottom">5dp</item>
         <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme_1" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#00000000</item>
+        <item name="colorPrimaryDark">#00000000</item>
+        <item name="colorAccent">#00000000</item>
     </style>
 
 </resources>

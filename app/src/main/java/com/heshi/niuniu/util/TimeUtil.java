@@ -354,7 +354,7 @@ public class TimeUtil {
      * @param time
      * @return
      */
-    public String getDateToString(long time) {
+    public  String getDateToString(long time) {
         Date d = new Date(time);
         sf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         return sf.format(d);
@@ -465,4 +465,5 @@ public class TimeUtil {
         return substring + "小时" + min + "分";
 
     }
+
 }

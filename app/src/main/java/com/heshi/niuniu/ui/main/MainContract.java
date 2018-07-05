@@ -25,6 +25,9 @@ public class MainContract {
 
         void getImPass(String name);
 
+        void loginIm(String userId, String password, String appKey);
+
+
     }
 
 }

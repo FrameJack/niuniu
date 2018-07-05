@@ -12,6 +12,7 @@ import com.heshi.niuniu.present.MModel;
 public class RegisterContract {
 
     interface Model extends MModel {
+        void onSuccess();
 
     }
 

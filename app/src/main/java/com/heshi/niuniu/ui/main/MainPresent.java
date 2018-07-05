@@ -8,9 +8,12 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.BaseAdapter;
 
+import com.alibaba.mobileim.channel.event.IWxCallback;
 import com.heshi.niuniu.adapter.BaseFragmentAdapter;
 import com.heshi.niuniu.app.Constants;
 import com.heshi.niuniu.fragment.main.mine.MineApi;
+import com.heshi.niuniu.im.common.Constant;
+import com.heshi.niuniu.im.sample.LoginSampleHelper;
 import com.heshi.niuniu.model.ImModel;
 import com.heshi.niuniu.present.BasePresenter;
 import com.heshi.niuniu.rx.data.RxResultHelper;
@@ -33,6 +36,8 @@ import rx.Subscriber;
 public class MainPresent extends BasePresenter<MainContract.Model> implements MainContract.Presenter {
 
     private MainApi api;
+    private LoginSampleHelper loginHelper;
+
 
     @Inject
     public MainPresent(Activity activity, OkHttpClient okHttpClient, Retrofit retrofit) {
@@ -61,29 +66,53 @@ public class MainPresent extends BasePresenter<MainContract.Model> implements Ma
     @Override
     public void getImPass(String name) {
 
-        if (TextUtils.isEmpty(Constants.im_usrName)) {
-            addSubscription(api.getImPass(name)
-                            .compose(SchedulersCompat.applyIoSchedulers())
-                            .compose(RxResultHelper.handleResult())
-                    , new Subscriber<ImModel>() {
-                        @Override
-                        public void onCompleted() {
+        addSubscription(api.getImPass(name)
+                        .compose(SchedulersCompat.applyIoSchedulers())
+                        .compose(RxResultHelper.handleResult())
+                , new Subscriber<ImModel>() {
+                    @Override
+                    public void onCompleted() {
 
-                        }
+                    }
 
-                        @Override
-                        public void onError(Throwable e) {
+                    @Override
+                    public void onError(Throwable e) {
 
-                        }
+                    }
 
-                        @Override
-                        public void onNext(ImModel imModel) {
-                            Log.e("main+ssdas", imModel.toString());
-                            Constants.saveImInfo(imModel);
-                        }
-                    });
+                    @Override
+                    public void onNext(ImModel imModel) {
+                        Log.e("main+ssdas", imModel.toString());
+                        Constants.saveImInfo(imModel);
+                    }
+                });
 
-        }
+    }
+
+    @Override
+    public void loginIm(String userId, String password, String appKey) {
+        loginHelper = LoginSampleHelper.getInstance();
+
+        loginHelper.login_Sample(userId, password, appKey, new IWxCallback() {
+            @Override
+            public void onSuccess(Object... objects) {
+                Constants.isLoginIm = true;
+                Log.e("聊天服务器", "聊天服务器连接成功");
+            }
+
+            @Override
+            public void onError(int i, String s) {
+                Constants.isLoginIm = false;
+                Log.e("聊天服务器", "聊天服务器连接失败");
+
+            }
+
+            @Override
+            public void onProgress(int i) {
+                Log.e("聊天服务器", "登录中");
+
+            }
+        });
     }
 
 }

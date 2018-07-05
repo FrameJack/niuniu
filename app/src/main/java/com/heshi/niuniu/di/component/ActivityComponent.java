@@ -5,6 +5,7 @@ import android.app.Activity;
 
 import com.heshi.niuniu.di.PerActivity;
 import com.heshi.niuniu.di.module.ActivityModule;
+import com.heshi.niuniu.im.activity.chat.ChatActivity;
 import com.heshi.niuniu.ui.login.LoginActivity;
 import com.heshi.niuniu.ui.main.MainActivity;
 import com.heshi.niuniu.ui.password.commit_pass.CommitPassActivity;
@@ -43,4 +44,7 @@ public interface ActivityComponent {
 
     //webView
     void inject(XWebViewActivity xWebViewActivity);
+
+    //webView
+    void inject(ChatActivity chatActivity);
 }

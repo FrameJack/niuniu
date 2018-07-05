@@ -8,10 +8,15 @@ import android.support.multidex.MultiDexApplication;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.alibaba.sdk.android.AlibabaSDK;
+import com.alibaba.sdk.android.callback.InitResultCallback;
+import com.alibaba.sdk.android.media.MediaService;
+import com.alibaba.wxlib.util.SysUtil;
 import com.google.gson.Gson;
 import com.heshi.niuniu.di.component.AppComponent;
 import com.heshi.niuniu.di.component.DaggerAppComponent;
 import com.heshi.niuniu.di.module.AppModule;
+import com.heshi.niuniu.im.sample.InitHelper;
 import com.heshi.niuniu.net.Network;
 import com.heshi.niuniu.util.Ext;
 import com.heshi.niuniu.util.ViewUtils;
@@ -44,11 +49,15 @@ public class MyApplication extends MultiDexApplication {
     public static String USER_ID = "";
     public static String appToken = "123456"; // 用户登录token
     public static String APPID = "ANDROID-1.0.0";//appid
+    public static final String NAMESPACE = "openimdemo";
+
     public static Application application;
 
     public static Context applicationContext;
     private static MyApplication instance;
     public static String currentUserNick = "";
+    private Context sContext;
+    private String TAG="MyApplication";
 
 
     @Override
@@ -76,6 +85,7 @@ public class MyApplication extends MultiDexApplication {
         dagger();
         JpushInit();
         initData();
+        initChat();
 
         //        GlideCacheUtil.getInstance().clearImageAllCache(getApplication());
         // bugly 配置  初始化Bugly
@@ -259,5 +269,46 @@ public class MyApplication extends MultiDexApplication {
         return mAppComponent;
     }
 
+
+    private void initChat(){
+
+        //todo Application.onCreate中，首先执行这部分代码，以下代码固定在此处，不要改动，这里return是为了退出Application.onCreate！！！
+        if(mustRunFirstInsideApplicationOnCreate()){
+            //todo 如果在":TCMSSevice"进程中，无需进行openIM和app业务的初始化，以节省内存
+            return;
+        }
+
+        //初始化云旺SDK
+        InitHelper.initYWSDK(this);
+
+        //初始化反馈功能(未使用反馈功能的用户无需调用该初始化)
+
+        InitHelper.initFeedBack(this);
+
+//        //初始化多媒体SDK，小视频和阅后即焚功能需要使用多媒体SDK
+//        AlibabaSDK.asyncInit(this, new InitResultCallback() {
+//            @Override
+//            public void onSuccess() {
+//                Log.e(TAG, "-----initTaeSDK----onSuccess()-------" );
+//                MediaService mediaService = AlibabaSDK.getService(MediaService.class);
+//                mediaService.enableHttpDNS(); //果用户为了避免域名劫持，可以启用HttpDNS
+//                mediaService.enableLog(); //在调试时，可以打印日志。正式上线前可以关闭
+//            }
+//
+//            @Override
+//            public void onFailure(int code, String msg) {
+//                Log.e(TAG, "-------onFailure----msg:" + msg + "  code:" + code);
+//            }
+//        });
+
+
+    }
+
+    private boolean mustRunFirstInsideApplicationOnCreate() {
+        //必须的初始化
+        SysUtil.setApplication(this);
+        sContext = getApplicationContext();
+        return SysUtil.isTCMSServiceProcess(sContext);
+    }
 
 }
