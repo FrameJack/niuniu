@@ -22,7 +22,7 @@
                 android:layout_height="34dp"
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="15dp"
-               
+
                 android:background="@drawable/shape_msg_edit" />
 
             <LinearLayout
@@ -71,6 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:background="@color/color_f7f7f8"
                 android:text="抢红包"
                 android:textSize="16sp" />
 
@@ -80,7 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_marginLeft="15dp"
-           
+
             android:background="@color/color_E8E8E9" />
 
         <LinearLayout
@@ -100,8 +101,10 @@
 
             <TextView
                 android:layout_width="wrap_content"
+
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:background="@color/color_f7f7f8"
                 android:text="发红包"
                 android:textSize="16sp" />
 
@@ -111,7 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_marginLeft="15dp"
-           
+
             android:background="@color/color_E8E8E9" />
 
         <LinearLayout
@@ -143,7 +146,7 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_marginLeft="15dp"
-       
+
         android:background="@color/color_E8E8E9" />
 
 </LinearLayout>

@@ -25,6 +25,27 @@ public class ApiUrl {
 
 
     //获取im信息
-    public static final String getImPass = "im/user.do";
+    public static final String getImPass = "redfive/im/user.do";
+
+    //获取基本信息
+    public static final String getBaseInfo = "red/user/findfriend.do";
+
+    //获取im信息 user_name
+    public static final String getWeiBo = "redfive/blog/count_circle.do";
+
+    //获取im信息 user_name
+    public static final String getDynamic = "redfive/face/count_circle.do";
+
+    //获取粉丝 user_id
+    public static final String getFan = "red/user/count_friend.do";
+
+    //获取红包  user_id
+    public static final String getRedPacket = "red/payred/pay_count.do";
+
+    //获取红包  user_id
+    public static final String getImgUrl = "red/use/gethard_pic.do";
+
+    //获取红包  user_id
+    public static final String updataImg = "red/use/hard_pic.do";
 
 }

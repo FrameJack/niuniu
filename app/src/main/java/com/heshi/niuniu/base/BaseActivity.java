@@ -148,7 +148,7 @@ public abstract class BaseActivity<T extends IPresenter> extends AppCompatActivi
      * 自动转接back的事件
      */
     protected void _backProce() {
-        View temp = findViewById(R.id.tv_back);
+        View temp = findViewById(R.id.view_back);
         if (temp != null) {
             temp.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -397,7 +397,7 @@ public abstract class BaseActivity<T extends IPresenter> extends AppCompatActivi
 //     * @param event
 //     */
 //    @Subscribe
-//    public void getEvent(MeaasgeEvent event) {
+//    public void getEvent(MessageEvent event) {
 //        /**
 //         *  如果检测到重新登陆完每个页面就自动刷新
 //         */

@@ -8,10 +8,9 @@
     <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
         android:id="@+id/rec_msg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:paddingTop="10dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     </com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView>

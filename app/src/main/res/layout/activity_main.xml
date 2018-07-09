@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorWhite"
+    android:background="@color/background"
     tools:context="com.heshi.niuniu.ui.main.MainActivity">
 
     <include
@@ -25,7 +25,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:layout_weight="1"
         android:background="@color/color_8989a6" />
 
     <com.heshi.niuniu.custom.tab.CustomTabView

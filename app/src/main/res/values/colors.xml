@@ -30,6 +30,13 @@
     <color name="color_E8E8E9">#E8E8E9</color>
     <color name="color_1D1D26">#1D1D26</color>
     <color name="color_FC3768">#FC3768</color>
+    <color name="color_454344">#454344</color>
+    <color name="color_4DD8D8D8">#4DD8D8D8</color>
 
+    <!--我的-->
+    <color name="color_F7F7F7">#F7F7F7</color>
+    <color name="color_5784BF">#5784BF</color>
+    <color name="color_e8e8e8">#e8e8e8</color>
+    <color name="color_f40f0f">#f40f0f</color>
 
 </resources>

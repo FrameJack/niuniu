@@ -15,7 +15,7 @@
     <RelativeLayout
         android:id="@+id/custom_title_layout"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="55dp"
         android:background="@color/colorMain"
         android:orientation="horizontal">
 
@@ -35,7 +35,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="13dp"
                 android:background="@color/color_333333"
-                tl:srcCompat="@drawable/icon_back" />
+                android:src="@drawable/icon_back" />
 
             <TextView
                 android:layout_width="wrap_content"

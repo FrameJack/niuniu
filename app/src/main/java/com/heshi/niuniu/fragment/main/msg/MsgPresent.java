@@ -9,8 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.mobileim.YWChannel;
 import com.alibaba.mobileim.YWIMKit;
 import com.alibaba.mobileim.conversation.YWConversation;
+import com.alibaba.mobileim.conversation.YWConversationType;
+import com.alibaba.mobileim.ui.WxChattingActvity;
 import com.heshi.niuniu.R;
 import com.heshi.niuniu.adapter.msg.MessageAdapter;
 import com.heshi.niuniu.app.Constants;
@@ -180,14 +183,27 @@ public class MsgPresent extends BasePresenter<MsgContract.Model>
     @Override
     public void onItemClick(View view, int position) {
 //        ToashUtils.show(mActivity,"shenme");
-        Bundle data = new Bundle();
-        data.putString("targetId", list.get(position).getLatestEServiceContactId());
-        data.putString("extraAppKey",Constants.appkey);
-        UIHelper.startActivity(mActivity, ChatActivity.class,data);
+//        Bundle data = new Bundle();
+//        data.putString("targetId", list.get(position).getLatestEServiceContactId());
+//        data.putString("extraAppKey",Constants.appkey);
+//        UIHelper.startActivity(mActivity, ChatActivity.class,data);
 //        YWIMKit  mIMKit=LoginSampleHelper.getInstance().getIMKit();
-//
+////
 //        Intent intent = mIMKit.getChattingActivityIntent(list.get(position).getLatestEServiceContactId(), Constants.appkey);
 //        mActivity.startActivity(intent);
 
+
+//        list.get(position).getLatestEServiceContactId(), Constants.appkey
+
+//        Bundle data = new Bundle();
+//        data.putString("extraUserId", Constants.im_usrName);
+//        data.putString("extraAppKey", Constants.appkey);
+//        UIHelper.startActivity(mActivity, WxChattingActvity.class, data);
+
+        Intent intent = new Intent(YWChannel.getApplication(), WxChattingActvity.class);
+        intent.putExtra("extraUserId", list.get(position).getLatestEServiceContactId());
+        intent.putExtra("extraAppKey", Constants.appkey);
+        intent.putExtra("conversationType", YWConversationType.P2P.getValue());
+        mActivity.startActivity(intent);
     }
 }

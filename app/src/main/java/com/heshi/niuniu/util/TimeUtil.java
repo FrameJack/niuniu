@@ -153,6 +153,26 @@ public class TimeUtil {
         return timeString;
     }
 
+    /**
+     * 获取当前时间
+     *
+     * @return
+     */
+    public String getCurTime() {
+        String timeString = null;
+        Time time = new Time();
+        time.setToNow();
+        String year = thanTen(time.year);
+        String month = thanTen(time.month + 1);
+        String monthDay = thanTen(time.monthDay);
+        String hour = thanTen(time.hour);
+        String minute = thanTen(time.minute);
+
+        timeString = year + month+ monthDay+ hour + minute;
+        // System.out.println("-------timeString----------" + timeString);
+        return timeString;
+    }
+
     public int calculate(int year, int month) {
 
         boolean yearleap = judge(year);

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/OneSDK/OneSDK.iml" filepath="$PROJECT_DIR$/OneSDK/OneSDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/YZxing-lib/YZxing-lib.iml" filepath="$PROJECT_DIR$/YZxing-lib/YZxing-lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/bgabadge/bgabadge.iml" filepath="$PROJECT_DIR$/bgabadge/bgabadge.iml" />
       <module fileurl="file://$PROJECT_DIR$/imagepicker/imagepicker.iml" filepath="$PROJECT_DIR$/imagepicker/imagepicker.iml" />

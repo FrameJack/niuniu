@@ -37,7 +37,8 @@
                 android:gravity="center"
                 android:text="1"
                 android:textColor="@color/colorWhite"
-                android:textSize="12dp" />
+                android:textSize="12dp"
+                android:visibility="invisible" />
 
         </RelativeLayout>
 
@@ -49,10 +50,11 @@
 
             <TextView
                 android:id="@+id/text_title"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="14dp"
+                android:singleLine="true"
                 android:text="企业号"
                 android:textColor="@color/color_1D1D26"
                 android:textSize="16sp" />

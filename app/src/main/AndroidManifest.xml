@@ -37,10 +37,10 @@
     <!-- 极光推送 权限 -->
 
     <permission
-        android:name="com.hctx.company.oa.permission.JPUSH_MESSAGE"
+        android:name="com.heshi.niuniu.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.hctx.company.oa.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="com.heshi.niuniu.permission.JPUSH_MESSAGE" />
 
 
     <!--Em permission -->
@@ -59,10 +59,10 @@
         android:protectionLevel="signature" />
 
     <permission
-        android:name="com.hctx.company.oa.permission.MIPUSH_RECEIVE"
+        android:name="com.heshi.niuniu.permission.MIPUSH_RECEIVE"
         android:protectionLevel="signatureOrSystem" />
 
-    <uses-permission android:name="com.hctx.company.oa.permission.MIPUSH_RECEIVE" />
+    <uses-permission android:name="com.heshi.niuniu.permission.MIPUSH_RECEIVE" />
 
     <application
         android:name=".base.MyApplication"
@@ -156,6 +156,24 @@
         <!-- 浏览器服务-->
         <activity
             android:name=".im.activity.chat.ChatActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_1"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+
+        </activity>
+
+        <!-- 用户基本信息-->
+        <activity
+            android:name=".ui.mine.info.PersonInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_1"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+
+        </activity>
+
+        <!-- 修改头像-->
+        <activity
+            android:name=".ui.mine.change_photo.ChangePhotoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme_1"
             android:windowSoftInputMode="stateHidden|adjustPan">

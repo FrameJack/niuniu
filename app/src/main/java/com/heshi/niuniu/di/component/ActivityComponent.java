@@ -8,6 +8,8 @@ import com.heshi.niuniu.di.module.ActivityModule;
 import com.heshi.niuniu.im.activity.chat.ChatActivity;
 import com.heshi.niuniu.ui.login.LoginActivity;
 import com.heshi.niuniu.ui.main.MainActivity;
+import com.heshi.niuniu.ui.mine.change_photo.ChangePhotoActivity;
+import com.heshi.niuniu.ui.mine.info.PersonInfoActivity;
 import com.heshi.niuniu.ui.password.commit_pass.CommitPassActivity;
 import com.heshi.niuniu.ui.password.forget.ForgetPassActivity;
 import com.heshi.niuniu.ui.password.register.RegisterActivity;
@@ -47,4 +49,10 @@ public interface ActivityComponent {
 
     //webView
     void inject(ChatActivity chatActivity);
+
+    //用户信息
+    void inject(PersonInfoActivity personInfoActivity);
+
+    //更改头像
+    void inject(ChangePhotoActivity changePhotoActivity);
 }

@@ -31,6 +31,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
+
+import static com.heshi.niuniu.app.Constants.USER_PORTRAIT;
 
 
 /**
@@ -99,6 +102,7 @@ public class MyApplication extends MultiDexApplication {
         CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(context);
         strategy.setUploadProcess(processName == null || processName.equals(packageName));
         initTencentWebView(); //初始化tencent WebView
+        initPersonAvatar();
     }
 
 
@@ -309,6 +313,12 @@ public class MyApplication extends MultiDexApplication {
         SysUtil.setApplication(this);
         sContext = getApplicationContext();
         return SysUtil.isTCMSServiceProcess(sContext);
+    }
+
+    private void initPersonAvatar() {
+        Random random = new Random();
+        int    num    = random.nextInt(10);
+        USER_PORTRAIT = USER_PORTRAIT + num;
     }
 
 }

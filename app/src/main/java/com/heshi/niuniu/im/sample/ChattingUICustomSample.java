@@ -238,11 +238,11 @@ public class ChattingUICustomSample extends IMChattingPageUI {
         View view = inflater.inflate(R.layout.custom_chatting_title, new LinearLayout(context), false);
         view.setBackgroundColor(Color.parseColor("#00b4ff"));
         TextView textView = (TextView) view.findViewById(R.id.title);
-
-        View tempTopBarVH = view.findViewById(R.id.comm_topBarSteep);
-        if (tempTopBarVH != null) {
-            AppUtils.AutoSteepProssByHeight(tempTopBarVH);
-        }
+//
+//        View tempTopBarVH = view.findViewById(R.id.comm_topBarSteep);
+//        if (tempTopBarVH != null) {
+//            AppUtils.AutoSteepProssByHeight(tempTopBarVH);
+//        }
 
         String title = null;
         if (conversation.getConversationType() == YWConversationType.P2P) {

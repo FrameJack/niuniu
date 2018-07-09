@@ -1,6 +1,7 @@
 package com.heshi.niuniu.adapter.msg;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.alibaba.mobileim.conversation.YWConversation;
@@ -31,7 +32,13 @@ public class MessageAdapter extends BaseMyRecyclerVIewAdapter<YWConversation> {
 
         String date = new TimeUtil().getDateToString(mode.getLastestMessage().getTimeInMillisecond());
 
-        holder.setText(R.id.text_title, mode.getLastestMessage().getAuthorUserName());
+        if (!TextUtils.isEmpty(mode.getLastestMessage().getAuthorUserName())){
+//            holder.setText(R.id.text_title, mode.getLastestMessage().get);
+
+        }else {
+            holder.setText(R.id.text_title, "");
+
+        }
         holder.setText(R.id.text_msg, mode.getLastestMessage().getContent());
         holder.setText(R.id.text_item_last_time, date);
 

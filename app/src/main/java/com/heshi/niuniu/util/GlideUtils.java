@@ -21,7 +21,6 @@ import com.heshi.niuniu.util.glideutil.GlideRoundTransform;
 import java.io.File;
 
 
-
 /**
  * Created by wali on 2016/9/22.
  */
@@ -31,6 +30,16 @@ public class GlideUtils {
                 .load(url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
 //                .error(R.mipmap.placeholder)
+                .into(imageView);
+    }
+
+    public static void noCacheloadImg(String url, ImageView imageView) {
+        Glide.with(MyApplication.application)
+                .load(url)
+//                .error(R.mipmap.icon_img_error)
+//                .placeholder(R.mipmap.icon_img_error)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
                 .into(imageView);
     }
 

@@ -13,7 +13,7 @@ import com.heshi.niuniu.util.SharedHelper;
 public class Constants {
 
     public static final String Base_Url = "http://api.zhimaim.com/api/";//正式
-    public static final String Im_Url = "http://121.42.177.97:8080/redfive/";
+    public static final String Im_Url = "http://121.42.177.97:8080/";
 
     //network time
     public static final int HTTP_CONNECT_TIMEOUT = 16000;
@@ -33,6 +33,10 @@ public class Constants {
     public static final String IM_PASS_KEY = "im_pass";
     public static final String APP_KEY = "appkey";
     public static boolean isLoginIm;
+    public static final String EXTRA_RESULT_CODE_TYPE = "result_code_type";
+    public static final String EXTRA_RESULT_CONTENT = "result_content";
+    public static String USER_PORTRAIT = "000";
+
 
 
     public static void saveInfo(LoginModel loginModel, String name) {

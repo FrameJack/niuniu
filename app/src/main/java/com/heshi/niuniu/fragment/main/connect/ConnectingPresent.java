@@ -1,8 +1,11 @@
 package com.heshi.niuniu.fragment.main.connect;
 
 import android.app.Activity;
+import android.support.v7.widget.RecyclerView;
 
 import com.heshi.niuniu.present.BasePresenter;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -22,4 +25,14 @@ public class ConnectingPresent extends BasePresenter<ConnectingContract.Model>
     }
 
 
+    @Override
+    public void upCurrListIndex(String key) {
+
+    }
+
+    @Override
+    public void initAdapter(RecyclerView recyclerView, int type, List<Integer> newList, int moreFilter) {
+
+
+    }
 }
