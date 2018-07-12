@@ -48,4 +48,9 @@ public class ApiUrl {
     //获取红包  user_id
     public static final String updataImg = "red/use/hard_pic.do";
 
+
+    //获取红包  user_id
+    public static final String getAllFriend = "red/user/allfriend.do";
+
+
 }

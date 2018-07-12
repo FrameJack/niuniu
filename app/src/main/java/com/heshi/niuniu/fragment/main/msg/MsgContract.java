@@ -22,7 +22,7 @@ public class MsgContract {
     interface Presenter extends IPresenter<Model> {
         void initAdapter(SwipeMenuRecyclerView recyclerView);
         void getMsgList(List<YWConversation> mConversationList);
-        void setNotify();
+        void setNotify(List<YWConversation> mConversationList);
     }
 
 }

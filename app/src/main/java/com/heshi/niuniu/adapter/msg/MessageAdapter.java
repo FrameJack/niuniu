@@ -43,7 +43,8 @@ public class MessageAdapter extends BaseMyRecyclerVIewAdapter<YWConversation> {
         holder.setText(R.id.text_item_last_time, date);
 
         holder.setText(R.id.text_msg_count, mode.getUnreadCount() + "");
-        holder.getView(R.id.text_msg_count, mode.getUnreadCount() == 0 ? View.INVISIBLE : View.VISIBLE);
+        View view=holder.getView(R.id.text_msg_count);
+        view.setVisibility( mode.getUnreadCount() == 0 ? View.INVISIBLE : View.VISIBLE);
 
 //        BGABadgeImageView img = holder.getView(R.id.img_msg);
 //        img.showTextBadge("23");

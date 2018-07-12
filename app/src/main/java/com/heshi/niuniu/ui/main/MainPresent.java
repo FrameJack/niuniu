@@ -63,56 +63,8 @@ public class MainPresent extends BasePresenter<MainContract.Model> implements Ma
 
     }
 
-    @Override
-    public void getImPass(String name) {
 
-        addSubscription(api.getImPass(name)
-                        .compose(SchedulersCompat.applyIoSchedulers())
-                        .compose(RxResultHelper.handleResult())
-                , new Subscriber<ImModel>() {
-                    @Override
-                    public void onCompleted() {
 
-                    }
 
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(ImModel imModel) {
-                        Log.e("main+ssdas", imModel.toString());
-                        Constants.saveImInfo(imModel);
-                    }
-                });
-
-    }
-
-    @Override
-    public void loginIm(String userId, String password, String appKey) {
-        loginHelper = LoginSampleHelper.getInstance();
-
-        loginHelper.login_Sample(userId, password, appKey, new IWxCallback() {
-            @Override
-            public void onSuccess(Object... objects) {
-                Constants.isLoginIm = true;
-                Log.e("聊天服务器", "聊天服务器连接成功");
-            }
-
-            @Override
-            public void onError(int i, String s) {
-                Constants.isLoginIm = false;
-                Log.e("聊天服务器", "聊天服务器连接失败");
-
-            }
-
-            @Override
-            public void onProgress(int i) {
-                Log.e("聊天服务器", "登录中");
-
-            }
-        });
-    }
 
 }

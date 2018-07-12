@@ -40,7 +40,8 @@ public class StartPageActivity extends BaseActivity {
 
     private void IsFIrstLogin() {
         Constants.readInfo();
-        LoginSampleHelper.getInstance().initIMKit(Constants.im_usrName, Constants.appkey);
+
+//        LoginSampleHelper.getInstance().initIMKit(Constants.im_usrName, Constants.appkey);
 
         new Handler().postDelayed(new Runnable() {
             public void run() {

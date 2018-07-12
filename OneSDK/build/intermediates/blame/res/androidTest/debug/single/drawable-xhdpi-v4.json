@@ -140,12 +140,12 @@
         "source": "D:\\WorkSpace\\niuniu\\OneSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\aliwx_s052.png"
     },
     {
-        "merged": "D:\\WorkSpace\\niuniu\\OneSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\aliwx_search_text_bg.9.png",
-        "source": "D:\\WorkSpace\\niuniu\\OneSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\aliwx_search_text_bg.9.png"
-    },
-    {
         "merged": "D:\\WorkSpace\\niuniu\\OneSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\aliwx_s089.png",
         "source": "D:\\WorkSpace\\niuniu\\OneSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\aliwx_s089.png"
+    },
+    {
+        "merged": "D:\\WorkSpace\\niuniu\\OneSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\aliwx_search_text_bg.9.png",
+        "source": "D:\\WorkSpace\\niuniu\\OneSDK\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\aliwx_search_text_bg.9.png"
     },
     {
         "merged": "D:\\WorkSpace\\niuniu\\OneSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\aliwx_green_button_bg_nor.9.png",

@@ -108,4 +108,21 @@
         <item name="android:windowExitAnimation">@anim/actionsheet_dialog_out</item>
     </style>
 
+    <style name="ContactsProtrait">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">12dp</item>
+        <!--<item name="android:layout_toRightOf">@+id/item_contact_Icon</item>-->
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <!--45dp行高-->
+    <style name="linesW">
+        <item name="android:layout_height">1px</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/color_d7d7d7</item>
+    </style>
+
 </resources>

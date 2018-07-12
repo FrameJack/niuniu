@@ -2,6 +2,7 @@ package com.heshi.niuniu.ui.login;
 
 
 import com.heshi.niuniu.app.ApiUrl;
+import com.heshi.niuniu.model.ImModel;
 import com.heshi.niuniu.model.LoginModel;
 import com.heshi.niuniu.model.Response;
 
@@ -20,5 +21,10 @@ public interface LoginApi {
     @POST(ApiUrl.Login)
     Observable<Response<LoginModel>> login(@Field("username") String username
             , @Field("password") String password);
+
+    @FormUrlEncoded
+    @POST(ApiUrl.getImPass)
+    Observable<Response<ImModel>>getImPass(@Field("user_name") String user_name);
+
 
 }

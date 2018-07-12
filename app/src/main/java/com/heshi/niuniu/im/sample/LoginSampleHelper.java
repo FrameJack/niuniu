@@ -69,7 +69,7 @@ public class LoginSampleHelper {
     //以下两个内容是测试环境使用，开发无需关注
 //    public static final String APP_KEY_TEST = "4272";  //60026702
 
-    public static final String APP_KEY_TEST = "60027574";  //60026702    60028148
+    public static final String APP_KEY_TEST = "24641603";  //60026702    60028148
 
 
     public static YWEnvType sEnvType = YWEnvType.ONLINE;
@@ -118,9 +118,11 @@ public class LoginSampleHelper {
         IMAutoLoginInfoStoreUtil.setLoginUserId(Constants.im_usrName);
         IMAutoLoginInfoStoreUtil.setAppkey(Constants.appkey);
 
+        Constants.readInfo();
+
         //初始化IMKit
-        final String userId = IMAutoLoginInfoStoreUtil.getLoginUserId();
-        final String appkey = IMAutoLoginInfoStoreUtil.getAppkey();
+        final String userId = Constants.im_usrName;
+        final String appkey = Constants.appkey;
         TcmsEnvType type = EnvManager.getInstance().getCurrentEnvType(mApp);
         if (type == TcmsEnvType.ONLINE || type == TcmsEnvType.PRE) {
             if (TextUtils.isEmpty(appkey)) {

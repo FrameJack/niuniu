@@ -1,5 +1,6 @@
 package com.heshi.niuniu.fragment.main.msg;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -8,24 +9,46 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.alibaba.mobileim.YWAPI;
 import com.alibaba.mobileim.YWIMCore;
 import com.alibaba.mobileim.YWIMKit;
 import com.alibaba.mobileim.channel.event.IWxCallback;
+import com.alibaba.mobileim.channel.util.YWLog;
 import com.alibaba.mobileim.conversation.IYWConversationListener;
 import com.alibaba.mobileim.conversation.IYWConversationService;
 import com.alibaba.mobileim.conversation.IYWConversationUnreadChangeListener;
+import com.alibaba.mobileim.conversation.IYWMessageLifeCycleListener;
+import com.alibaba.mobileim.conversation.IYWMessageListener;
 import com.alibaba.mobileim.conversation.YWConversation;
+import com.alibaba.mobileim.conversation.YWConversationType;
+import com.alibaba.mobileim.conversation.YWMessage;
+import com.alibaba.mobileim.conversation.YWMessageChannel;
+import com.alibaba.mobileim.conversation.YWMessageType;
+import com.alibaba.mobileim.conversation.YWPushInfo;
+import com.alibaba.mobileim.login.IYWConnectionListener;
+import com.alibaba.mobileim.login.YWLoginCode;
+import com.alibaba.mobileim.login.YWLoginState;
+import com.google.gson.Gson;
 import com.heshi.niuniu.R;
 import com.heshi.niuniu.app.Constants;
 import com.heshi.niuniu.base.BaseFragment;
+import com.heshi.niuniu.base.MyApplication;
 import com.heshi.niuniu.di.component.AppComponent;
 import com.heshi.niuniu.di.component.DaggerFragmentComponent;
 import com.heshi.niuniu.di.module.FragmentModule;
+import com.heshi.niuniu.eventbus.GetContactEvent;
+import com.heshi.niuniu.im.common.Notification;
 import com.heshi.niuniu.im.core.InitSample;
 import com.heshi.niuniu.im.sample.LoginSampleHelper;
+import com.heshi.niuniu.im.util.ConversationSampleHelper;
+import com.heshi.niuniu.model.ImCusModel;
+import com.heshi.niuniu.ui.login.LoginActivity;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
@@ -46,6 +69,7 @@ public class MsgFragment extends BaseFragment<MsgPresent>
     private IYWConversationService mConversationService;
     private Handler mUIHandler = new Handler(Looper.getMainLooper());
     private YWIMKit mIMKit;
+    private ConversationSampleHelper helper;
 
 
     @Override
@@ -66,111 +90,44 @@ public class MsgFragment extends BaseFragment<MsgPresent>
     @Override
     protected void initData() {
         super.initData();
+        EventBus.getDefault().register(this);
         mPresenter.initAdapter(recMsg);
 
-//        YWIMCore mIMCore = InitSample.getInstance().getIMCore();
+        ConversationSampleHelper helper = new ConversationSampleHelper();
+        mConversationService = helper.getConversationService();
+        mConversationService.removeConversationListener(mConversationListener);
+        mConversationService.addConversationListener(mConversationListener);
 
-        YWIMCore mIMCore = YWAPI.createIMCore(Constants.im_usrName, Constants.appkey);
+        if (helper != null)
+            if (helper.getAllConversations().size() > 0 && helper.getAllConversations().size() > 0)
+                mPresenter.getMsgList(helper.getAllConversations());
 
-        if (mIMCore != null) {
-            mConversationService = mIMCore.getConversationService();
-            //初始化最近联系人列表
-            List<YWConversation> mConversationList = mConversationService.getConversationList();
-
-//            Log.e("sda", mConversationList.get(0).getConversationId() + "");
-            if (mConversationList != null) {
-                mPresenter.getMsgList(mConversationList);
-            }
-            //添加会话列表变更监听，收到该监听回调时更新adapter就可以刷新页面了
-            mConversationService.addConversationListener(mConversationListener);
-        }
-
-        mIMKit = LoginSampleHelper.getInstance().getIMKit();
-        if (mIMKit == null) {
-            return;
-        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        syncRecentConversations();
     }
 
     IYWConversationListener mConversationListener = new IYWConversationListener() {
         @Override
         public void onItemUpdated() {
-            mUIHandler.post(new Runnable() {
-                @Override
-                public void run() {
-
-                }
-            });
+            List<YWConversation> mConversationList = mConversationService.getConversationList();
+            mPresenter.setNotify(mConversationList);
         }
     };
 
-    private void syncRecentConversations() {
-        mConversationService.syncRecentConversations(new IWxCallback() {
-            @Override
-            public void onSuccess(Object... result) {
-                mUIHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        mPresenter.setNotify();
 
-                    }
-                });
-            }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
 
-            @Override
-            public void onError(int code, String info) {
-                mUIHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        mPresenter.setNotify();
-
-                    }
-                });
-            }
-
-            @Override
-            public void onProgress(int progress) {
-
-            }
-        });
     }
 
-//    private void initConversationServiceAndListener() {
-//        mConversationUnreadChangeListener = new IYWConversationUnreadChangeListener() {
-//
-//            //当未读数发生变化时会回调该方法，开发者可以在该方法中更新未读数
-//            @Override
-//            public void onUnreadChange() {
-//                mHandler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        LoginSampleHelper loginHelper = LoginSampleHelper.getInstance();
-//                        final YWIMKit imKit = loginHelper.getIMKit();
-//                        mConversationService = imKit.getConversationService();
-//                        //获取当前登录用户的所有未读数
-//                        int unReadCount = mConversationService.getAllUnreadCount();
-//                        //设置桌面角标的未读数
-//                        mIMKit.setShortcutBadger(unReadCount);
-//                        if (unReadCount > 0) {
-//                            mUnread.setVisibility(View.VISIBLE);
-//                            if (unReadCount < 100) {
-//                                mUnread.setText(unReadCount + "");
-//                            } else {
-//                                mUnread.setText("99+");
-//                            }
-//                        } else {
-//                            mUnread.setVisibility(View.INVISIBLE);
-//                        }
-//                    }
-//                });
-//            }
-//        };
-//        mConversationService.addTotalUnreadChangeListener(mConversationUnreadChangeListener);
-//    }
+    @Subscribe
+    public void getEvent(GetContactEvent event){
+
+    }
 
 }

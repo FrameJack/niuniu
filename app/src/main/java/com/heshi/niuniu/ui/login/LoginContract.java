@@ -15,6 +15,8 @@ public class LoginContract {
 
     interface Presenter extends IPresenter<Model> {
         void loginAction(String name,String password);
+        void getImPass(String name);
+        void loginIm(String userId, String password, String appKey);
 
     }
 

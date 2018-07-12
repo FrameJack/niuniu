@@ -10,8 +10,10 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:fillViewport="true">
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingBottom="20dp">
 
 
         <LinearLayout
@@ -55,9 +57,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:singleLine="true"
-                        tl:text="梅西"
                         android:textColor="@color/color_333333"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        tl:text="梅西" />
 
                     <TextView
                         android:id="@+id/text_mine_count"

@@ -16,8 +16,5 @@ import rx.Observable;
 
 public interface MainApi {
 
-    @FormUrlEncoded
-    @POST(ApiUrl.getImPass)
-    Observable<Response<ImModel>>getImPass(@Field("user_name") String user_name);
 
 }

@@ -34,5 +34,6 @@ public class ConnectingPresent extends BasePresenter<ConnectingContract.Model>
     public void initAdapter(RecyclerView recyclerView, int type, List<Integer> newList, int moreFilter) {
 
 
+
     }
 }

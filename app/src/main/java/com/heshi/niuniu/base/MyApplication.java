@@ -287,7 +287,7 @@ public class MyApplication extends MultiDexApplication {
 
         //初始化反馈功能(未使用反馈功能的用户无需调用该初始化)
 
-        InitHelper.initFeedBack(this);
+//        InitHelper.initFeedBack(this);
 
 //        //初始化多媒体SDK，小视频和阅后即焚功能需要使用多媒体SDK
 //        AlibabaSDK.asyncInit(this, new InitResultCallback() {

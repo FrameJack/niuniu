@@ -36,7 +36,7 @@ public class Constants {
     public static final String EXTRA_RESULT_CODE_TYPE = "result_code_type";
     public static final String EXTRA_RESULT_CONTENT = "result_content";
     public static String USER_PORTRAIT = "000";
-
+    public static String IMG_URL="";
 
 
     public static void saveInfo(LoginModel loginModel, String name) {

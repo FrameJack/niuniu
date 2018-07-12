@@ -91,16 +91,18 @@ public class MsgPresent extends BasePresenter<MsgContract.Model>
 
     @Override
     public void getMsgList(List<YWConversation> mConversationList) {
-        list.addAll(mConversationList);
-
-        adapter.notifyDataSetChanged();
-
-        adapter.setHeaderView(view);
+        if (mConversationList!=null&&mConversationList.size()>0){
+            list.addAll(mConversationList);
+            adapter.notifyDataSetChanged();
+        }
+//        adapter.setHeaderView(view);
 
     }
 
     @Override
-    public void setNotify() {
+    public void setNotify(List<YWConversation> mConversationList) {
+        list.clear();
+        list.addAll(mConversationList);
         adapter.notifyDataSetChanged();
     }
 

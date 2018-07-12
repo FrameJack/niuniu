@@ -89,6 +89,7 @@ dependencies {
     compile project(':OneSDK')
     compile 'com.gyf.barlibrary:barlibrary:2.2.6'
     compile project(':YZxing-lib')
+    compile 'com.mikhaellopez:circularimageview:3.0.2'
 
 }
 
