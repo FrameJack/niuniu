@@ -64,12 +64,12 @@ public class LoginSampleHelper {
     }
 
     // 应用APPKEY，这个APPKEY是申请应用时获取的
-    public static String APP_KEY = "24641603";
+    public static String APP_KEY = "24963282";
 
     //以下两个内容是测试环境使用，开发无需关注
 //    public static final String APP_KEY_TEST = "4272";  //60026702
 
-    public static final String APP_KEY_TEST = "24641603";  //60026702    60028148
+    public static final String APP_KEY_TEST = "24963282";  //60026702    60028148
 
 
     public static YWEnvType sEnvType = YWEnvType.ONLINE;

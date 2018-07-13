@@ -8,6 +8,9 @@ import com.heshi.niuniu.di.module.ActivityModule;
 import com.heshi.niuniu.im.activity.chat.ChatActivity;
 import com.heshi.niuniu.ui.login.LoginActivity;
 import com.heshi.niuniu.ui.main.MainActivity;
+import com.heshi.niuniu.ui.main.connect.ConnectAddFriendActivity;
+import com.heshi.niuniu.ui.main.friend_info.FriendInfoActivity;
+import com.heshi.niuniu.ui.main.search.ConnectSearchActivity;
 import com.heshi.niuniu.ui.mine.change_photo.ChangePhotoActivity;
 import com.heshi.niuniu.ui.mine.info.PersonInfoActivity;
 import com.heshi.niuniu.ui.password.commit_pass.CommitPassActivity;
@@ -55,4 +58,14 @@ public interface ActivityComponent {
 
     //更改头像
     void inject(ChangePhotoActivity changePhotoActivity);
+
+    //搜朋友
+    void inject(ConnectAddFriendActivity connectAddFriendActivity);
+
+    //搜索新朋友
+    void inject(ConnectSearchActivity connectSearchActivity);
+
+    //添加好友信息
+    void inject(FriendInfoActivity friendInfoActivity);
+
 }

@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import com.heshi.niuniu.present.IPresenter;
 import com.heshi.niuniu.present.MModel;
 import com.heshi.niuniu.ui.main.MainContract;
+import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 
 import java.util.List;
 
@@ -21,9 +22,8 @@ public class ConnectingContract {
 
     interface Presenter extends IPresenter<Model> {
         void upCurrListIndex(String key);
-        void initAdapter(RecyclerView recyclerView, int type, List<Integer> newList, int moreFilter);
-
-
+        void initAdapter(SwipeMenuRecyclerView recyclerView, int type);
+        void getList(String name);
     }
 
 }

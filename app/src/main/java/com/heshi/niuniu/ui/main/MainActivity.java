@@ -58,7 +58,9 @@ import com.heshi.niuniu.fragment.main.weibo.WeiBoFragment;
 import com.heshi.niuniu.im.sample.LoginSampleHelper;
 import com.heshi.niuniu.model.ImCusModel;
 import com.heshi.niuniu.ui.login.LoginActivity;
+import com.heshi.niuniu.ui.main.connect.ConnectAddFriendActivity;
 import com.heshi.niuniu.util.AnimUtil;
+import com.heshi.niuniu.util.UIHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,12 +131,12 @@ public class MainActivity extends BaseActivity<MainPresent> implements CustomTab
         setTabData();
         initPop();
 
-        if (Constants.isLoginIm){
+        if (Constants.isLoginIm) {
             YWIMCore kit = YWAPI.createIMCore(Constants.im_usrName, Constants.appkey);
             if (kit != null) {
                 mConversationService = kit.getConversationService();
                 mIMKit = LoginSampleHelper.getInstance().getIMKit();
-                if (mIMKit!=null){
+                if (mIMKit != null) {
                     initListener();
                 }
             }
@@ -197,11 +199,15 @@ public class MainActivity extends BaseActivity<MainPresent> implements CustomTab
         switch (position) {
             case 0:
                 imgAddRight.setVisibility(View.VISIBLE);
+                imgAddRight.setImageResource(R.drawable.icon_add);
 
                 textTitle.setText("消息");
 
                 break;
             case 1:
+                imgAddRight.setVisibility(View.VISIBLE);
+                imgAddRight.setImageResource(R.drawable.icon_connect_friend);
+
                 textTitle.setText("人脉");
 
                 break;
@@ -258,8 +264,26 @@ public class MainActivity extends BaseActivity<MainPresent> implements CustomTab
 
     @OnClick(R.id.img_add_right)
     public void onViewClicked() {
-        showPop();
-        toggleBright();
+        int index = viewpagerMain.getCurrentItem();
+        switch (index) {
+            case 0:
+                showPop();
+                toggleBright();
+                break;
+            case 1:
+                UIHelper.startActivity(mContext, ConnectAddFriendActivity.class);
+
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+        }
     }
 
     private void initPop() {

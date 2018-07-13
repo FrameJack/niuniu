@@ -99,8 +99,7 @@ public class MsgFragment extends BaseFragment<MsgPresent>
         mConversationService.addConversationListener(mConversationListener);
 
         if (helper != null)
-            if (helper.getAllConversations().size() > 0 && helper.getAllConversations().size() > 0)
-                mPresenter.getMsgList(helper.getAllConversations());
+            mPresenter.getMsgList(helper.getAllConversations());
 
     }
 

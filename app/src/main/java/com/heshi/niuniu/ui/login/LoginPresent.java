@@ -58,7 +58,6 @@ public class LoginPresent extends BasePresenter<LoginContract.Model> implements 
                 , new Subscriber<LoginModel>() {
                     @Override
                     public void onCompleted() {
-                        getImPass(name);
                     }
 
                     @Override
@@ -70,6 +69,8 @@ public class LoginPresent extends BasePresenter<LoginContract.Model> implements 
                     @Override
                     public void onNext(LoginModel loginModel) {
                         Constants.saveInfo(loginModel, name);
+                        getImPass(name);
+
                     }
                 });
 

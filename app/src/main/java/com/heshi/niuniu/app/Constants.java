@@ -14,6 +14,8 @@ public class Constants {
 
     public static final String Base_Url = "http://api.zhimaim.com/api/";//正式
     public static final String Im_Url = "http://121.42.177.97:8080/";
+    //icon头像获取
+    public static final String Icon_url = "http://121.42.177.97:8080/red/use/pic_id.do?user_id=";
 
     //network time
     public static final int HTTP_CONNECT_TIMEOUT = 16000;
@@ -36,7 +38,7 @@ public class Constants {
     public static final String EXTRA_RESULT_CODE_TYPE = "result_code_type";
     public static final String EXTRA_RESULT_CONTENT = "result_content";
     public static String USER_PORTRAIT = "000";
-    public static String IMG_URL="";
+    public static String IMG_URL = "";
 
 
     public static void saveInfo(LoginModel loginModel, String name) {

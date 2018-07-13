@@ -95,8 +95,7 @@ public class MsgPresent extends BasePresenter<MsgContract.Model>
             list.addAll(mConversationList);
             adapter.notifyDataSetChanged();
         }
-//        adapter.setHeaderView(view);
-
+        adapter.setHeaderView(view);
     }
 
     @Override

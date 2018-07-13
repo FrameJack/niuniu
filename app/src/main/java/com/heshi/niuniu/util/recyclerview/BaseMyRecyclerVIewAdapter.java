@@ -2,6 +2,7 @@ package com.heshi.niuniu.util.recyclerview;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -364,4 +365,16 @@ public abstract class BaseMyRecyclerVIewAdapter<T> extends RecyclerViewAdapter {
         return (T) mList.get(position);
     }
 
+
+    /**
+     * RecyclerView 移动到当前位置，
+     * @param manager
+     *         设置RecyclerView对应的manager
+     * @param n
+     *         要跳转的位置
+     */
+    public static void MoveToPosition(LinearLayoutManager manager, int n) {
+        manager.scrollToPositionWithOffset(n, 0);
+        manager.setStackFromEnd(true);
+    }
 }

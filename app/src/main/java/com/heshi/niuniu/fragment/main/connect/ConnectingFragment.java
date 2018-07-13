@@ -6,12 +6,14 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.heshi.niuniu.R;
+import com.heshi.niuniu.app.Constants;
 import com.heshi.niuniu.base.BaseFragment;
 import com.heshi.niuniu.di.component.AppComponent;
 import com.heshi.niuniu.di.component.DaggerFragmentComponent;
 import com.heshi.niuniu.di.module.FragmentModule;
 import com.heshi.niuniu.util.AlphaImageView;
 import com.heshi.niuniu.util.LetterToast;
+import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 
 import java.util.List;
 
@@ -25,7 +27,7 @@ import butterknife.OnClick;
 public class ConnectingFragment extends BaseFragment<ConnectingPresent>
         implements ConnectingContract.Model, AlphaImageView.OnTouchLetterChangeListenner {
     @BindView(R.id.frg_all_contect_rv)
-    RecyclerView contectRv;
+    SwipeMenuRecyclerView contectRv;
     @BindView(R.id.frg_contact_alpImgView)
     AlphaImageView aiv_Index;
     LetterToast letterToast;
@@ -53,21 +55,11 @@ public class ConnectingFragment extends BaseFragment<ConnectingPresent>
 
     @Override
     protected void initEventAndData() {
-        aiv_Index.setOnTouchLetterChangeListenner(this);
-        if (type != -1) {
-            mPresenter.initAdapter(contectRv, type, newList,moreFilter);
-//            mPresenter.getContactVersion();
-        }
-    }
+        mPresenter.initAdapter(contectRv, type);
+        mPresenter.getList(Constants.userName);
 
-    @Override
-    protected void initData() {
-        super.initData();
-        //刚进app时候加载
-        if (type == -1) {
-//            mPresenter.getContactVersion();
-            mPresenter.initAdapter(contectRv, type, newList,moreFilter);
-        }
+        aiv_Index.setOnTouchLetterChangeListenner(this);
+
     }
 
     /**

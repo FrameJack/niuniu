@@ -23,11 +23,13 @@
     </android.support.v4.view.ViewPager>
 
     <View
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@color/color_8989a6" />
 
     <com.heshi.niuniu.custom.tab.CustomTabView
+        android:background="@color/colorWhite"
         android:id="@+id/mCustomTabView"
         android:layout_width="match_parent"
         android:layout_height="49dp"

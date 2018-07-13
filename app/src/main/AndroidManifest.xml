@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.heshi.niuniu">
 
-    <uses-sdk android:minSdkVersion="14" tools:overrideLibrary="com.taobao.taorecorder,com.taobao.taorecorde_sdk"/>
+    <uses-sdk
+        android:minSdkVersion="14"
+        tools:overrideLibrary="com.taobao.taorecorder,com.taobao.taorecorde_sdk" />
+
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.RESTART_PACKAGES" />
@@ -33,7 +36,6 @@
     <!--<uses-permission android:name="android.permission." />-->
     <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
     <uses-permission android:name="android.permission.GET_TASKS" />
-
 
 
     <!-- 必选（蒲公英自动更新权限） -->
@@ -181,6 +183,33 @@
         <!-- 修改头像-->
         <activity
             android:name=".ui.mine.change_photo.ChangePhotoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_1"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+
+        </activity>
+
+        <!-- 添加朋友-->
+        <activity
+            android:name=".ui.main.connect.ConnectAddFriendActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_1"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+
+        </activity>
+
+        <!-- 朋友搜索-->
+        <activity
+            android:name=".ui.main.search.ConnectSearchActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_1"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+
+        </activity>
+
+        <!-- 添加好友信息-->
+        <activity
+            android:name=".ui.main.friend_info.FriendInfoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme_1"
             android:windowSoftInputMode="stateHidden|adjustPan">

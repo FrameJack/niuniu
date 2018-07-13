@@ -49,8 +49,20 @@ public class ApiUrl {
     public static final String updataImg = "red/use/hard_pic.do";
 
 
-    //获取红包  user_id
+    //获取红包(所有好友)  user_id
     public static final String getAllFriend = "red/user/allfriend.do";
+
+    //头像获取
+    public static final String getIconUrl = "red/use/pic_id.do";
+
+    //查询好友 name Post
+    public static final String searchFriend = "red/user/findfriend.do";
+
+    //查询好友  friend_id
+    public static final String findFriend = "red/user/find_id.do";
+
+    //添加好友  friend_id
+    public static final String addFriend = "red/user/addfriend.do";
 
 
 }
